@@ -33,18 +33,18 @@ RUN mkdir -p /root/quartus \
     && wget -q  https://downloads.intel.com/akdlm/software/acdsinst/23.1std.1/993/ib_tar/Quartus-lite-23.1std.1.993-linux.tar -O ./Quartus-lite-23.1std.1.993-linux.tar \
     && tar -xvf ./Quartus-lite-23.1std.1.993-linux.tar \
     && chmod +x ./components/QuartusLiteSetup-23.1std.1.993-linux.run \
-    && ./components/QuartusLiteSetup-23.1std.1.993-linux.run --installdir /opt/intelFPGA_lite/23.1 --accept_eula 1 --mode unattended --disable-components modelsim_ase \
-    && rm -rf /opt/intelFPGA_lite/23.1/nios2eds \
+    && ./components/QuartusLiteSetup-23.1std.1.993-linux.run --installdir /opt/intel/23.1 --accept_eula 1 --mode unattended --disable-components questa_fe --disable-components questa_fse --disable-components quartus_update  \
+    && rm -rf /opt/intel/23.1/nios2eds \
     && rm -rf /root/quartus
 
 # Add Quartus binaries to path 
-ENV PATH "$PATH:/opt/intelFPGA_lite/23.1/quartus/bin"
+ENV PATH="$PATH:/opt/intel/23.1/quartus/bin"
 
 # Hacks for fixing malloc errors when using Quartus
 # Reference: https://community.intel.com/t5/Intel-Quartus-Prime-Software/Quartus-failed-to-run-inside-Docker-Linux/td-p/241058
-ENV LD_PRELOAD "/usr/lib/x86_64-linux-gnu/libtcmalloc_minimal.so.4"
-RUN mv "/opt/intelFPGA_lite/23.1/quartus/linux64/libstdc++.so.6" "/opt/intelFPGA_lite/23.1/quartus/linux64/libstdc++.so.6.ignore"
-ENV LD_LIBRARY_PATH "/usr/lib/x86_64-linux-gnu/"
+ENV LD_PRELOAD="/usr/lib/x86_64-linux-gnu/libtcmalloc_minimal.so.4"
+RUN mv "/opt/intel/23.1/quartus/linux64/libstdc++.so.6" "/opt/intel/23.1/quartus/linux64/libstdc++.so.6.ignore"
+ENV LD_LIBRARY_PATH="/usr/lib/x86_64-linux-gnu/"
 
 # Enter the shell
 CMD ["bash"]
