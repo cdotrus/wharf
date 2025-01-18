@@ -53,7 +53,7 @@ RUN echo "en_US.UTF-8 UTF-8" > /etc/locale.gen && \
 # Download ModelSim-Intel
 RUN mkdir -p /root/modelsim \
     && cd /root/modelsim \    
-    && wget -q https://cdrdv2.intel.com/v1/dl/getContent/750666/750670?filename=ModelSimSetup-20.1.1.720-linux.run -O ./ModelSimSetup-20.1.1.720-linux.run
+    && wget -q http://download.altera.com/akdlm/software/acdsinst/20.1std.1/720/ib_installers/ModelSimSetup-20.1.1.720-linux.run -O ./ModelSimSetup-20.1.1.720-linux.run
 
 # Install ModelSim-Intel
 RUN cd /root/modelsim \
