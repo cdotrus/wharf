@@ -1,6 +1,6 @@
 # _Wharf_
 
-[![Build](https://github.com/chaseruskin/wharf/actions/workflows/build.yml/badge.svg?branch=trunk)](https://github.com/chaseruskin/verb/actions/workflows/pipeline.yml) [![DockerHub](https://img.shields.io/badge/DockerHub-images-important.svg?logo=docker)](https://hub.docker.com/u/chaseruskin) 
+[![Pipeline](https://github.com/chaseruskin/wharf/actions/workflows/pipeline.yml/badge.svg?branch=trunk)](https://github.com/chaseruskin/wharf/actions/workflows/pipeline.yml) [![DockerHub](https://img.shields.io/badge/DockerHub-images-important.svg?logo=docker)](https://hub.docker.com/u/chaseruskin) 
 
 A collection of Dockerfiles for building docker images that contain tools needed for digital hardware (FPGA/ASIC) development.
 
@@ -10,7 +10,7 @@ The docker images are built in _layers_ across the stack, where each layer build
 
 ![](./docs/system.dio.svg)
 
-The images are designed this way based on their stability. The Operating System layer will be most the stable in terms of infrequent changes and usage applying to the range of availale toolchains. The Toolchain layer will be slightly more instable as it might seem fit to jump to a newer version of a tool once it releases. The Development layer might be the most volatile, where process improvements and open-source tools might quickly be added to improve the overall workflow.
+The images are designed this way based on their stability. The Operating System layer will be most the stable in terms of infrequent changes and usage applying to the range of availale toolchains. The Toolchain layer will be slightly more volatile as it might seem fit to jump to a newer version of a tool once it releases. The Development layer might be the most volatile, where process improvements and open-source tools might quickly be added to improve the overall workflow.
 
 ### Operating System
 
@@ -20,7 +20,7 @@ Available: Ubuntu
 
 ### Toolchain
 
-The next layer is the [_Toolchain_](./toolchain) layer, which adds the core EDA tool(s) to the image. A toolchain might be AMD Vivado, Synopsys Design Compiler, or QuestaSim.
+The next layer is the [_Toolchain_](./toolchain) layer, which adds the core EDA tool(s) to the image. A toolchain might be AMD Vivado, Synopsys Design Compiler, or QuestaSim. These tools are considered integral to your hardware development workflow.
 
 Available: GHDL
 
