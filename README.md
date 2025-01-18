@@ -4,31 +4,41 @@
 
 A collection of Dockerfiles for building docker images that contain tools needed for digital hardware (FPGA/ASIC) development.
 
-## Supported Images
+## Overview
 
-The following tools are built into separate images and are available on [DockerHub](https://hub.docker.com/u/chaseruskin):
+The docker images are built in _layers_ across the stack, where each layer builds upon an existing image. There are three layers in this ecosystem: Operating System, Toolchain, and Development. All three layers combined create a _stack_.
 
-- ### ModelSim-Intel (Ubuntu 18.04)
-```
-$ vsim -version
-Model Technology ModelSim ALTERA STARTER EDITION vsim 10.5b Simulator 2016.10 Oct  5 2016
-```
+![](./docs/system.dio.svg)
 
-- ### Intel Quartus Prime Lite (Ubuntu 18.04)
+The images are designed this way based on their stability. The Operating System layer will be most the stable in terms of infrequent changes and usage applying to the range of availale toolchains. The Toolchain layer will be slightly more instable as it might seem fit to jump to a newer version of a tool once it releases. The Development layer might be the most volatile, where process improvements and open-source tools might quickly be added to improve the overall workflow.
 
-```
-$ quartus_sh -version
-Quartus Prime Shell
-Version 19.1.0 Build 670 09/22/2019 SJ Lite Edition
-Copyright (C) 2019  Intel Corporation. All rights reserved.
-```
+### Operating System
 
-- ### GHDL (Ubuntu 22.04)
+The base layer is the _Operating System_ layer, which sets the foundation for which computers and systems are supported as well as which tools can be used in higher layers. This layer is typically pulled directly from pre-existing official images on DockerHub.
 
-```
-$ ghdl -v
-```
+Available: Ubuntu
 
-## Details
+### Toolchain
 
-Each tool has its own respective directory which contains the `Dockerfile` used to build the relevant image. Jobs processed through GitHub Actions are responsible for running the docker builds and updating DockerHub with the latest images.
+The next layer is the [_Toolchain_](./toolchain) layer, which adds the core EDA tool(s) to the image. A toolchain might be AMD Vivado, Synopsys Design Compiler, or QuestaSim.
+
+Available: GHDL
+
+### Development
+
+The final layer is the [_Development_](./development/) layer, which adds various command-line utilities and tools that are used in assisting the core EDA tool workflow. These can include linters, scripting languages, package managers, and other lightweight command-line tools.
+
+## Stacks
+
+The following are the currently available [Stacks](./stack/):
+
+Name | OS | Toolchain | Development
+-- | -- | -- | --
+
+## Usage
+
+As a user, it is recommended to grab an image that is a _stack_. If you are looking to contribute or make adjustments, you may want to pull from a lower layer. All images are publicly available on [DockerHub](https://hub.docker.com/u/chaseruskin).
+
+## Contributing
+
+Have a tool or workflow you find useful? Want to encourage others to use it by making it easily accessible? Feel free to open an issue and request an image for it. Bonus points if the tool is open-source.

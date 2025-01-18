@@ -1,0 +1,30 @@
+name: Pipeline
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  operating-system:
+    uses: chaseruskin/wharf/.github/workflows/os.yml@trunk 
+    secrets:
+        DOCKER_HUB_USERNAME: ${{ secrets.DOCKER_HUB_USERNAME }}
+        DOCKER_HUB_ACCESS_TOKEN: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
+  toolchain:
+    uses: chaseruskin/wharf/.github/workflows/toolchain.yml@trunk
+    needs: [operating-system]
+    secrets:
+        DOCKER_HUB_USERNAME: ${{ secrets.DOCKER_HUB_USERNAME }}
+        DOCKER_HUB_ACCESS_TOKEN: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
+  development:
+    uses: chaseruskin/wharf/.github/workflows/development.yml@trunk
+    needs: [toolchain]
+    secrets:
+        DOCKER_HUB_USERNAME: ${{ secrets.DOCKER_HUB_USERNAME }}
+        DOCKER_HUB_ACCESS_TOKEN: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
+  stack:
+    uses: chaseruskin/wharf/.github/workflows/stack.yml@trunk
+    needs: [development]
+    secrets:
+        DOCKER_HUB_USERNAME: ${{ secrets.DOCKER_HUB_USERNAME }}
+        DOCKER_HUB_ACCESS_TOKEN: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
