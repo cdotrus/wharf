@@ -1,5 +1,5 @@
-# Creates a docker image containing tools and programs required to run 
-# simulations.
+# Creates a docker image for a toolchain layer within the wharf project's
+# hardware development stack.
 #
 # References: 
 #   https://staff.cs.upt.ro/~opritoiu/ca/labs/modelsim.pdf
@@ -8,9 +8,9 @@
 # Build upon the operating system layer 
 FROM ubuntu:22.04
 
-# Provide custom image metadata
+# Custom image metadata
 LABEL maintainer="Chase Ruskin"
-LABEL description="ModelSim-Intel Starter Edition 19.1 on Ubuntu 18.04"
+LABEL description="A toolchain layer for modelsim-intel (starter edition 20.1.1)"
 
 # Set the timezone
 ENV TZ=US/Eastern
@@ -21,16 +21,18 @@ RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 RUN dpkg --add-architecture i386 && \
     apt-get update && apt-get -y install \
     libc6:i386 \
-    libncurses5:i386 \
-    libx11-6:i386 \
-    libxtst6:i386 \
     libstdc++6:i386 \
-    libxft2 \
-    libxft2:i386 \
-    lib32ncurses5 \
-    libxext6 \
+    libx11-6:i386 \
     libxext6:i386 \
-    lib32ncurses6 
+    libxft2:i386 \
+    libxinerama1:i386 \
+    libgtk2.0-0:i386 \
+    libxmu6:i386 \
+    lib32z1 \
+    libxext6 \
+    libx11-6 \
+    libxft2 \
+    libxt6
 
 # Install image dependencies (including those for DPI)
 RUN apt-get update && apt-get -y install \
@@ -66,7 +68,7 @@ RUN rm -rf /opt/altera/20.1/modelsim_ase/gcc-*.*.*-linux
 RUN ln -s /opt/altera/20.1/modelsim_ase/linux /opt/altera/20.1/modelsim_ase/linux_rh60
 
 # Add ModelSim binaries to path 
-ENV PATH "$PATH:/opt/altera/20.1/modelsim_ase/bin"
+ENV PATH="$PATH:/opt/altera/20.1/modelsim_ase/bin"
 
 # Enter the shell
-CMD ["bash"]
+CMD ["/bin/bash"]
