@@ -32,9 +32,9 @@ jobs:
         uses: docker/build-push-action@v6
         with:
           context: .
-          file: ./toolchain/modelsim/Dockerfile
+          file: ./toolchain/modelsim-intel/Dockerfile
           builder: ${{ steps.buildx.outputs.name }}
           push: true
-          tags: ${{ secrets.DOCKER_HUB_USERNAME }}/modelsim-intel:20.1-ubuntu-22.04
+          tags: ${{ secrets.DOCKER_HUB_USERNAME }}/modelsim-intel:20.1.1-ubuntu-22.04
           cache-from: type=registry,ref=${{ secrets.DOCKER_HUB_USERNAME }}/modelsim-intel:buildcache
           cache-to: type=registry,ref=${{ secrets.DOCKER_HUB_USERNAME }}/modelsim-intel:buildcache,mode=max

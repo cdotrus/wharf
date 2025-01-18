@@ -1,3 +1,3 @@
 # Development
 
-The development layer builds upon the toolchain layer to provide supportive tools around a given EDA toolchain.
+The development layer builds upon the toolchain layer to provide supportive tools for processes around a particular EDA toolchain.
