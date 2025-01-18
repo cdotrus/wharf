@@ -6,7 +6,7 @@ A collection of Dockerfiles for building docker images that contain tools needed
 
 ## Overview
 
-The docker images are built in _layers_ across the stack, where each layer builds upon an existing image. There are three layers in this ecosystem: Operating System, Toolchain, and Development. All three layers combined create a _stack_.
+The docker images are built in _layers_ across the stack, where each layer builds upon an existing image. There are three layers in this ecosystem: Operating System, Toolchain, and Development. All three layers combined create a _hardware development stack_, or stack for short.
 
 ![](./docs/system.dio.svg)
 
@@ -28,12 +28,17 @@ Available: GHDL
 
 The final layer is the [_Development_](./development/) layer, which adds various command-line utilities and tools that are used in assisting the core EDA tool workflow. These can include linters, scripting languages, package managers, and other lightweight command-line tools.
 
-## Stacks
+Available: 
 
-The following are the currently available [Stacks](./stack/):
+## Hardware Development Stacks
 
-Name | OS | Toolchain | Development
+All the layers combined together create a [_Hardware Development Stack_](./stack). A stack is intended for production use and is denoted by a unique name to help differentiate the possible combinations of the internal layers.
+
+The following stacks are available:
+
+Stack | OS | Toolchain | Development
 -- | -- | -- | --
+
 
 ## Usage
 
