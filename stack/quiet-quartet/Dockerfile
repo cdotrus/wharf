@@ -12,6 +12,9 @@ FROM chaseruskin/quartus-prime-lite:23.1.1-ubuntu-22.04
 
 COPY --from=0 / /
 
+# Re-export any toolchain environment variables
+ENV PATH="$PATH:/opt/intel/23.1/quartus/bin"
+
 # Add the development layer
 FROM chaseruskin/lab:latest-ubuntu-22.04
 

@@ -12,6 +12,9 @@ FROM chaseruskin/modelsim-intel:20.1.1-ubuntu-22.04
 
 COPY --from=0 / /
 
+# Re-export any toolchain environment variables
+ENV PATH="$PATH:/opt/altera/20.1/modelsim_ase/bin"
+
 # Add the development layer
 FROM chaseruskin/lab:latest-ubuntu-22.04
 
