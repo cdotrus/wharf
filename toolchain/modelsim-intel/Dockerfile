@@ -70,5 +70,8 @@ RUN ln -s /opt/altera/20.1/modelsim_ase/linux /opt/altera/20.1/modelsim_ase/linu
 # Add ModelSim binaries to path 
 ENV PATH="$PATH:/opt/altera/20.1/modelsim_ase/bin"
 
+# Log the tool's version
+RUN echo "vsim -version" >> /etc/tools
+
 # Enter the shell
 CMD ["/bin/bash"]

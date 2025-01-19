@@ -32,7 +32,7 @@ Examples: Python, Orbit
 
 ## Hardware Development Stacks
 
-All the layers combined together create a [_Hardware Development Stack_](./stack). A stack is intended for production use and is denoted by a unique name to help differentiate the possible combinations of the internal layers.
+All the layers combined together create a [_Hardware Development Stack_](./stacks). A stack is intended for production use and is denoted by a unique name to help differentiate the possible combinations of the internal layers.
 
 The following stacks are available:
 
@@ -45,6 +45,11 @@ Stack | OS | Toolchain | Development
 ## Usage
 
 As a user, it is recommended to grab an image that is a _stack_. If you are looking to contribute or make adjustments, you may want to pull from a lower layer. All images are publicly available on [DockerHub](https://hub.docker.com/u/chaseruskin).
+
+Each stack has a special file "/etc/tools" that can be used to display the available tools' versions. To check the version of tools being used in a particular docker image, just run:
+```
+source /etc/tools
+```
 
 ## Contributing
 

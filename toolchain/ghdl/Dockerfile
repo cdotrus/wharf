@@ -8,5 +8,8 @@ FROM ghdl/ghdl:ubuntu22-mcode
 LABEL maintainer="Chase Ruskin"
 LABEL description="A toolchain layer for ghdl"
 
+# Log the tool's version
+RUN echo "ghdl --version" >> /etc/tools
+
 # Enter the shell
 CMD ["/bin/bash"]

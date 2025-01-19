@@ -16,11 +16,17 @@ FROM brunneis/python:3.8.6-ubuntu-20.04
 # Configure Python for any scripting during simulations
 RUN python -m pip install --upgrade pip
 
+# Log the tool's version
+RUN echo "python --version" >> /etc/tools
+
 COPY --from=0 / /
 
 
 # @@@ Orbit (https://github.com/chaseruskin/orbit)
 FROM chaseruskin/orbit:latest-ubuntu-22.04
+
+# Log the tool's version
+RUN echo "orbit --version" >> /etc/tools
 
 COPY --from=1 / /
 
@@ -35,6 +41,8 @@ RUN cp "$HOME/.cargo/bin/just" "/usr/local/bin/just"
 # Uninstall Rust tools
 RUN $HOME/.cargo/bin/rustup self uninstall -y
 
+# Log the tool's version
+RUN echo "just --version" >> /etc/tools
 
 # Enter the shell
 CMD ["/bin/bash"]

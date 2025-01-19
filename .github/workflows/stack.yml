@@ -32,7 +32,7 @@ jobs:
         uses: docker/build-push-action@v6
         with:
           context: .
-          file: ./stack/melodic-marimba/Dockerfile
+          file: ./stacks/melodic-marimba/Dockerfile
           builder: ${{ steps.buildx.outputs.name }}
           push: true
           tags: ${{ secrets.DOCKER_HUB_USERNAME }}/melodic-marimba:latest
@@ -63,7 +63,7 @@ jobs:
         uses: docker/build-push-action@v6
         with:
           context: .
-          file: ./stack/quiet-quartet/Dockerfile
+          file: ./stacks/quiet-quartet/Dockerfile
           builder: ${{ steps.buildx.outputs.name }}
           push: true
           tags: ${{ secrets.DOCKER_HUB_USERNAME }}/quiet-quartet:latest
@@ -94,7 +94,7 @@ jobs:
         uses: docker/build-push-action@v6
         with:
           context: .
-          file: ./stack/groovy-guitar/Dockerfile
+          file: ./stacks/groovy-guitar/Dockerfile
           builder: ${{ steps.buildx.outputs.name }}
           push: true
           tags: ${{ secrets.DOCKER_HUB_USERNAME }}/groovy-guitar:latest

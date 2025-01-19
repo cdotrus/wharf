@@ -47,5 +47,8 @@ ENV LD_PRELOAD="/usr/lib/x86_64-linux-gnu/libtcmalloc_minimal.so.4"
 RUN mv "/opt/intel/23.1/quartus/linux64/libstdc++.so.6" "/opt/intel/23.1/quartus/linux64/libstdc++.so.6.ignore"
 ENV LD_LIBRARY_PATH="/usr/lib/x86_64-linux-gnu/"
 
+# Log the tool's version
+RUN echo "quartus_sh --version" >> /etc/tools
+
 # Enter the shell
 CMD ["bash"]
