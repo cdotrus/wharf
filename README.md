@@ -46,9 +46,9 @@ Stack | OS | Toolchain | Development
 
 As a user, it is recommended to grab an image that is a _stack_. If you are looking to contribute or make adjustments, you may want to pull from a lower layer. All images are publicly available on [DockerHub](https://hub.docker.com/u/chaseruskin).
 
-Each stack has a special file "/etc/tools" that can be used to display the available tools' versions. To check the version of tools being used in a particular docker image, just run:
+Each stack has a special file "/etc/tools" that can be used to display the available tools' versions. To check the version of tools being used within a particular docker image, just run:
 ```
-source /etc/tools
+bash /etc/tools
 ```
 
 ## Contributing

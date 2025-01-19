@@ -18,17 +18,15 @@ RUN python -m pip install --upgrade pip
 
 # Log the tool's version
 RUN echo "python --version" >> /etc/development-tools
-
 COPY --from=0 / /
 
 
 # @@@ Orbit (https://github.com/chaseruskin/orbit)
 FROM chaseruskin/orbit:latest-ubuntu-22.04
+COPY --from=1 / /
 
 # Log the tool's version
 RUN echo "orbit --version" >> /etc/development-tools
-
-COPY --from=1 / /
 
 
 # Download tools that are written in Rust
