@@ -42,6 +42,8 @@ Stack | OS | Toolchain | Development
 `melodic-marimba` | ubuntu-22.04 | modelsim-intel-20.1.1 | python, orbit, just
 `quiet-quartet` | ubuntu-22.04 | quartus-prime-lite-23.1.1 | python, orbit, just
 
+Hardware development stacks are versioned by the date they were built (yyy.mm.dd). Tool versions and the availability of tools within a stack may differ slightly between builds. If there is a large discrepancy between tools, a new stack will be created.
+
 ## Usage
 
 As a user, it is recommended to grab an image that is a _stack_. If you are looking to contribute or make adjustments, you may want to pull from a lower layer. All images are publicly available on [DockerHub](https://hub.docker.com/u/chaseruskin).
