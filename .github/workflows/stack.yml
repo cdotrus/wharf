@@ -20,7 +20,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Record the date
-        uses:
+        run: |
           echo "DOCKER_TAG_DATE=$(date "+%Y-%m-%d")" >> $GITHUB_ENV
 
       - name: Login to Docker Hub
@@ -57,7 +57,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Record the date
-        uses:
+        run: |
           echo "DOCKER_TAG_DATE=$(date "+%Y-%m-%d")" >> $GITHUB_ENV
 
       - name: Login to Docker Hub
@@ -94,7 +94,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Record the date
-        uses:
+        run: |
           echo "DOCKER_TAG_DATE=$(date "+%Y-%m-%d")" >> $GITHUB_ENV
 
       - name: Login to Docker Hub
