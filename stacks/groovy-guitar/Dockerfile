@@ -17,5 +17,11 @@ FROM chaseruskin/lab:latest-ubuntu-22.04
 
 COPY --from=1 / /
 
+# Re-export any toolchain environment variables that were dropped
+# N/A
+
+# Re-log the toolchain version information
+RUN echo "ghdl --version" >> /etc/tools
+
 # Enter the shell
 CMD ["/bin/bash"]

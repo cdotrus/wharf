@@ -20,5 +20,8 @@ COPY --from=1 / /
 # Re-export any toolchain environment variables that were dropped
 ENV PATH="$PATH:/opt/intel/23.1/quartus/bin"
 
+# Re-log the toolchain version information
+RUN echo "quartus_sh --version" >> /etc/tools
+
 # Enter the shell
 CMD ["/bin/bash"]
