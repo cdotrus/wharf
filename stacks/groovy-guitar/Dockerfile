@@ -21,8 +21,8 @@ COPY --from=1 / /
 # N/A
 
 # Merge tool information from across layers
-RUN echo "cat /etc/toolchain-tools" >> /etc/tools
-RUN echo "cat /etc/development-tools" >> /etc/tools
+RUN echo "$(cat /etc/toolchain-tools)" >> /etc/tools
+RUN echo "$(cat /etc/development-tools)" >> /etc/tools
 
 # Enter the shell
 CMD ["/bin/bash"]

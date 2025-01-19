@@ -8,6 +8,9 @@ FROM ghdl/ghdl:ubuntu22-mcode
 LABEL maintainer="Chase Ruskin"
 LABEL description="A toolchain layer for ghdl"
 
+# Add ghdl binary to path
+# N/A - already found on path
+
 # Log the tool's version
 RUN echo "ghdl --version" >> /etc/toolchain-tools
 
