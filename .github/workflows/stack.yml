@@ -19,6 +19,10 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Record the date
+        uses:
+          echo "DOCKER_TAG_DATE=$(date "+%Y-%m-%d")" >> $GITHUB_ENV
+
       - name: Login to Docker Hub
         uses: docker/login-action@v3
         with:
@@ -35,7 +39,9 @@ jobs:
           file: ./stacks/melodic-marimba/Dockerfile
           builder: ${{ steps.buildx.outputs.name }}
           push: true
-          tags: ${{ secrets.DOCKER_HUB_USERNAME }}/melodic-marimba:latest
+          tags: 
+            - ${{ secrets.DOCKER_HUB_USERNAME }}/melodic-marimba:latest
+            - ${{ secrets.DOCKER_HUB_USERNAME }}/melodic-marimba:${{ env.DOCKER_TAG_DATE }}
           cache-from: type=registry,ref=${{ secrets.DOCKER_HUB_USERNAME }}/melodic-marimba:buildcache
           cache-to: type=registry,ref=${{ secrets.DOCKER_HUB_USERNAME }}/melodic-marimba:buildcache,mode=max
 
@@ -49,6 +55,10 @@ jobs:
 
       - name: Checkout
         uses: actions/checkout@v4
+
+      - name: Record the date
+        uses:
+          echo "DOCKER_TAG_DATE=$(date "+%Y-%m-%d")" >> $GITHUB_ENV
 
       - name: Login to Docker Hub
         uses: docker/login-action@v3
@@ -66,7 +76,9 @@ jobs:
           file: ./stacks/quiet-quartet/Dockerfile
           builder: ${{ steps.buildx.outputs.name }}
           push: true
-          tags: ${{ secrets.DOCKER_HUB_USERNAME }}/quiet-quartet:latest
+          tags: 
+            - ${{ secrets.DOCKER_HUB_USERNAME }}/quiet-quartet:latest
+            - ${{ secrets.DOCKER_HUB_USERNAME }}/quiet-quartet:${{ env.DOCKER_TAG_DATE }}
           cache-from: type=registry,ref=${{ secrets.DOCKER_HUB_USERNAME }}/quiet-quartet:buildcache
           cache-to: type=registry,ref=${{ secrets.DOCKER_HUB_USERNAME }}/quiet-quartet:buildcache,mode=max
 
@@ -80,6 +92,10 @@ jobs:
 
       - name: Checkout
         uses: actions/checkout@v4
+
+      - name: Record the date
+        uses:
+          echo "DOCKER_TAG_DATE=$(date "+%Y-%m-%d")" >> $GITHUB_ENV
 
       - name: Login to Docker Hub
         uses: docker/login-action@v3
@@ -97,6 +113,8 @@ jobs:
           file: ./stacks/groovy-guitar/Dockerfile
           builder: ${{ steps.buildx.outputs.name }}
           push: true
-          tags: ${{ secrets.DOCKER_HUB_USERNAME }}/groovy-guitar:latest
+          tags: 
+            - ${{ secrets.DOCKER_HUB_USERNAME }}/groovy-guitar:latest
+            - ${{ secrets.DOCKER_HUB_USERNAME}}/groovy-guitar:${{ env.DOCKER_TAG_DATE }}
           cache-from: type=registry,ref=${{ secrets.DOCKER_HUB_USERNAME }}/groovy-guitar:buildcache
           cache-to: type=registry,ref=${{ secrets.DOCKER_HUB_USERNAME }}/groovy-guitar:buildcache,mode=max
