@@ -8,12 +8,12 @@ LABEL maintainer="Chase Ruskin"
 LABEL description="A hardware development stack around modelsim-intel"
 
 # Add the toolchain layer
-FROM chaseruskin/modelsim-intel:20.1.1-ubuntu-22.04
+FROM chaseruskin/modelsim-intel:20.1.1-ubuntu-22.04 AS toolchain
 
 COPY --from=os / /
 
 # Add the development layer
-FROM chaseruskin/lab:latest-ubuntu-22.04 AS toolchain
+FROM chaseruskin/lab:latest-ubuntu-22.04 AS development
 
 COPY --from=toolchain / /
 

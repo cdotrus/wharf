@@ -8,12 +8,12 @@ LABEL maintainer="Chase Ruskin"
 LABEL description="A hardware development stack around ghdl"
 
 # Add the toolchain layer
-FROM chaseruskin/ghdl-mcode:latest-ubuntu-22.04
+FROM chaseruskin/ghdl-mcode:latest-ubuntu-22.04 AS toolchain
 
 COPY --from=os / /
 
 # Add the development layer
-FROM chaseruskin/lab:latest-ubuntu-22.04 AS toolchain
+FROM chaseruskin/lab:latest-ubuntu-22.04 AS development
 
 COPY --from=toolchain / /
 

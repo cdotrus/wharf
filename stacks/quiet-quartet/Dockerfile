@@ -13,7 +13,7 @@ FROM chaseruskin/quartus-prime-lite:23.1.1-ubuntu-22.04 as toolchain
 COPY --from=os / /
 
 # Add the development layer
-FROM chaseruskin/lab:latest-ubuntu-22.04
+FROM chaseruskin/lab:latest-ubuntu-22.04 AS development
 
 COPY --from=toolchain / /
 
