@@ -39,7 +39,7 @@ The following stacks are available:
 Stack | OS | Toolchain | Development
 -- | -- | -- | --
 `groovy-guitar` | ubuntu-22.04 | ghdl-mcode-5.0.0-dev | python, orbit, just
-`melodic-marimba` | ubtuntu-22.04 | modelsim-intel-20.1.1 | python, orbit, just
+`melodic-marimba` | ubuntu-22.04 | modelsim-intel-20.1.1 | python, orbit, just
 `quiet-quartet` | ubuntu-22.04 | quartus-prime-lite-23.1.1 | python, orbit, just
 
 ## Usage
