@@ -20,8 +20,9 @@ COPY --from=1 / /
 # Re-export any toolchain environment variables that were dropped
 # N/A
 
-# Re-log the toolchain version information
-RUN echo "ghdl --version" >> /etc/tools
+# Merge tool information from across layers
+RUN echo "cat /etc/toolchain-tools" >> /etc/tools
+RUN echo "cat /etc/development-tools" >> /etc/tools
 
 # Enter the shell
 CMD ["/bin/bash"]

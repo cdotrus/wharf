@@ -48,7 +48,7 @@ RUN mv "/opt/intel/23.1/quartus/linux64/libstdc++.so.6" "/opt/intel/23.1/quartus
 ENV LD_LIBRARY_PATH="/usr/lib/x86_64-linux-gnu/"
 
 # Log the tool's version
-RUN echo "quartus_sh --version" >> /etc/tools
+RUN echo "quartus_sh --version" >> /etc/toolchain-tools
 
 # Enter the shell
 CMD ["bash"]

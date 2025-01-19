@@ -9,7 +9,7 @@ LABEL maintainer="Chase Ruskin"
 LABEL description="A toolchain layer for ghdl"
 
 # Log the tool's version
-RUN echo "ghdl --version" >> /etc/tools
+RUN echo "ghdl --version" >> /etc/toolchain-tools
 
 # Enter the shell
 CMD ["/bin/bash"]

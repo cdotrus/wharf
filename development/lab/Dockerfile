@@ -17,7 +17,7 @@ FROM brunneis/python:3.8.6-ubuntu-20.04
 RUN python -m pip install --upgrade pip
 
 # Log the tool's version
-RUN echo "python --version" >> /etc/tools
+RUN echo "python --version" >> /etc/development-tools
 
 COPY --from=0 / /
 
@@ -26,7 +26,7 @@ COPY --from=0 / /
 FROM chaseruskin/orbit:latest-ubuntu-22.04
 
 # Log the tool's version
-RUN echo "orbit --version" >> /etc/tools
+RUN echo "orbit --version" >> /etc/development-tools
 
 COPY --from=1 / /
 
@@ -42,7 +42,7 @@ RUN cp "$HOME/.cargo/bin/just" "/usr/local/bin/just"
 RUN $HOME/.cargo/bin/rustup self uninstall -y
 
 # Log the tool's version
-RUN echo "just --version" >> /etc/tools
+RUN echo "just --version" >> /etc/development-tools
 
 # Enter the shell
 CMD ["/bin/bash"]
