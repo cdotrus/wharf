@@ -1,14 +1,14 @@
-# A hardware development stack around modelsim-intel.
+# A hardware development stack around quartus-prime-lite.
 
 # Start with the operating system layer 
 FROM ubuntu:22.04
 
 # Custom image metadata
 LABEL maintainer="Chase Ruskin"
-LABEL description="A hardware development stack around modelsim-intel"
+LABEL description="A hardware development stack around quartus-prime-lite"
 
 # Add the toolchain layer
-FROM chaseruskin/modelsim-intel:20.1.1-ubuntu-22.04
+FROM chaseruskin/quartus-prime-lite:23.1.1-ubuntu-22.04
 
 COPY --from=0 / /
 

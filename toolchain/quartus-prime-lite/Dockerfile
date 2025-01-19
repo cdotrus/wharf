@@ -35,6 +35,7 @@ RUN mkdir -p /root/quartus \
     && chmod +x ./components/QuartusLiteSetup-23.1std.1.993-linux.run \
     && ./components/QuartusLiteSetup-23.1std.1.993-linux.run --installdir /opt/intel/23.1 --accept_eula 1 --mode unattended --disable-components questa_fe,questa_fse,quartus_update,quartus_help,riscfree \
     && rm -rf /opt/intel/23.1/nios2eds \
+    && rm -rf /opt/intel/23.1/niosv \
     && rm -rf /root/quartus
 
 # Add Quartus binaries to path 

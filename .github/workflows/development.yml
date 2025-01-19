@@ -8,7 +8,7 @@ on:
         required: true
 
 jobs:
-  lab-pack:
+  lab:
     runs-on: ubuntu-22.04
     steps:
       - name: Free space
@@ -32,9 +32,9 @@ jobs:
         uses: docker/build-push-action@v6
         with:
           context: .
-          file: ./development/lab-pack/Dockerfile
+          file: ./development/lab/Dockerfile
           builder: ${{ steps.buildx.outputs.name }}
           push: true
-          tags: ${{ secrets.DOCKER_HUB_USERNAME }}/lab-pack:latest-ubuntu-22.04
-          cache-from: type=registry,ref=${{ secrets.DOCKER_HUB_USERNAME }}/lab-pack:buildcache
-          cache-to: type=registry,ref=${{ secrets.DOCKER_HUB_USERNAME }}/lab-pack:buildcache,mode=max
+          tags: ${{ secrets.DOCKER_HUB_USERNAME }}/lab:latest-ubuntu-22.04
+          cache-from: type=registry,ref=${{ secrets.DOCKER_HUB_USERNAME }}/lab:buildcache
+          cache-to: type=registry,ref=${{ secrets.DOCKER_HUB_USERNAME }}/lab:buildcache,mode=max
