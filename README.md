@@ -16,19 +16,19 @@ The images are designed this way based on their stability. The Operating System 
 
 The base layer is the _Operating System_ layer, which sets the foundation for which computers and systems are supported as well as which tools can be used in higher layers. This layer is typically pulled directly from pre-existing official images on DockerHub.
 
-Available: Ubuntu
+Examples: Ubuntu
 
 ### Toolchain
 
 The next layer is the [_Toolchain_](./toolchain) layer, which adds the core EDA tool(s) to the image. A toolchain might be AMD Vivado, Synopsys Design Compiler, or QuestaSim. These tools are considered integral to your hardware development workflow.
 
-Available: GHDL
+Examples: GHDL, Quartus Prime Lite, ModelSim-Intel Starter Edition
 
 ### Development
 
 The final layer is the [_Development_](./development/) layer, which adds various command-line utilities and tools that are used in assisting the core EDA tool workflow. These can include linters, scripting languages, package managers, and other lightweight command-line tools.
 
-Available: 
+Examples: Python, Orbit
 
 ## Hardware Development Stacks
 
@@ -38,7 +38,9 @@ The following stacks are available:
 
 Stack | OS | Toolchain | Development
 -- | -- | -- | --
-
+`groovy-guitar` | ubuntu-22.04 | ghdl-mcode-5.0.0-dev | python, orbit, just
+`melodic-marimba` | ubtuntu-22.04 | modelsim-intel-20.1.1 | python, orbit, just
+`quiet-quartet` | ubuntu-22.04 | quartus-prime-lite-23.1.1 | python, orbit, just
 
 ## Usage
 
