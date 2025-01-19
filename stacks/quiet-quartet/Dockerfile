@@ -8,7 +8,7 @@ LABEL maintainer="Chase Ruskin"
 LABEL description="A hardware development stack around quartus-prime-lite"
 
 # Add the toolchain layer
-FROM chaseruskin/quartus-prime-lite:23.1.1-ubuntu-22.04 as toolchain
+FROM chaseruskin/quartus-prime-lite:23.1.1-ubuntu-22.04 AS toolchain
 
 COPY --from=os / /
 
