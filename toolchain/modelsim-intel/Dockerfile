@@ -67,9 +67,8 @@ RUN rm -rf /opt/altera/20.1/modelsim_ase/gcc-*.*.*-linux
 # Fix link
 RUN ln -s /opt/altera/20.1/modelsim_ase/linux /opt/altera/20.1/modelsim_ase/linux_rh60
 
-# Add ModelSim binaries to path 
-RUN echo "/opt/altera/20.1/modelsim_ase/bin" >> /etc/toolchain-paths
-ENV PATH="$PATH:$(cat /etc/toolchain-paths)"
+# Add ModelSim binaries to path
+ENV PATH="$PATH:/opt/altera/20.1/modelsim_ase/bin"
 
 # Log the tool's version
 RUN echo "vsim -version" >> /etc/toolchain-tools

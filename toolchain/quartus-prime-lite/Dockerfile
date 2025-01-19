@@ -38,9 +38,8 @@ RUN mkdir -p /root/quartus \
     && rm -rf /opt/intel/23.1/niosv \
     && rm -rf /root/quartus
 
-# Add Quartus binaries to path 
-RUN echo "/opt/intel/23.1/quartus/bin" >> /etc/toolchain-paths
-ENV PATH="$PATH:$(cat /etc/toolchain-paths)"
+# Add Quartus binaries to path
+ENV PATH="$PATH:/opt/intel/23.1/quartus/bin"
 
 # Hacks for fixing malloc errors when using Quartus
 # Reference: https://community.intel.com/t5/Intel-Quartus-Prime-Software/Quartus-failed-to-run-inside-Docker-Linux/td-p/241058
