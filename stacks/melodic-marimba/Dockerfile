@@ -24,5 +24,7 @@ COPY --from=toolchain / /
 RUN echo "$(cat /etc/toolchain-tools)" >> /etc/tools
 RUN echo "$(cat /etc/development-tools)" >> /etc/tools
 
+RUN echo "$PATH"
+
 # Enter the shell
 CMD ["/bin/bash"]
