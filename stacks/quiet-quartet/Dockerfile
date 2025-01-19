@@ -11,7 +11,7 @@ LABEL description="A hardware development stack using quartus-prime-lite"
 FROM chaseruskin/quartus-prime-lite:23.1.1-ubuntu-22.04 AS toolchain
 
 # Re-export any toolchain environment variables that were dropped
-ENV PATH="$PATH:$(cat /etc/toolchain-paths)"
+RUN export PATH="$PATH:$(cat /etc/toolchain-paths)"
 
 COPY --from=os / /
 

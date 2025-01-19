@@ -11,7 +11,7 @@ LABEL description="A hardware development stack using ghdl"
 FROM chaseruskin/ghdl-mcode:5.0.0-dev-ubuntu-22.04 AS toolchain
 
 # Re-export any toolchain environment variables that were dropped
-# N/A
+RUN export PATH="$PATH:$(cat /etc/toolchain-paths)"
 
 COPY --from=os / /
 

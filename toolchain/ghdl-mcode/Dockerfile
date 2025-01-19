@@ -9,7 +9,8 @@ LABEL maintainer="Chase Ruskin"
 LABEL description="A toolchain layer for ghdl"
 
 # Add ghdl binary to path
-# N/A - already found on path
+RUN echo "/opt/ghdl/bin" >> /etc/toolchain-paths
+ENV PATH="$PATH:$(cat /etc/toolchain-paths)"
 
 # Log the tool's version
 RUN echo "ghdl --version" >> /etc/toolchain-tools

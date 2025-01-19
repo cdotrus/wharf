@@ -11,7 +11,7 @@ LABEL description="A hardware development stack using modelsim-intel"
 FROM chaseruskin/modelsim-intel:20.1.1-ubuntu-22.04 AS toolchain
 
 # Re-export any toolchain environment variables that were dropped
-ENV PATH="$PATH:$(cat /etc/toolchain-paths)"
+RUN export PATH="$PATH:$(cat /etc/toolchain-paths)"
 
 COPY --from=os / /
 
