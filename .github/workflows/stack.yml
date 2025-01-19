@@ -39,9 +39,9 @@ jobs:
           file: ./stacks/melodic-marimba/Dockerfile
           builder: ${{ steps.buildx.outputs.name }}
           push: true
-          tags: 
-            - ${{ secrets.DOCKER_HUB_USERNAME }}/melodic-marimba:latest
-            - ${{ secrets.DOCKER_HUB_USERNAME }}/melodic-marimba:${{ env.DOCKER_TAG_DATE }}
+          tags: |
+            ${{ secrets.DOCKER_HUB_USERNAME }}/melodic-marimba:latest
+            ${{ secrets.DOCKER_HUB_USERNAME }}/melodic-marimba:${{ env.DOCKER_TAG_DATE }}
           cache-from: type=registry,ref=${{ secrets.DOCKER_HUB_USERNAME }}/melodic-marimba:buildcache
           cache-to: type=registry,ref=${{ secrets.DOCKER_HUB_USERNAME }}/melodic-marimba:buildcache,mode=max
 
@@ -76,9 +76,9 @@ jobs:
           file: ./stacks/quiet-quartet/Dockerfile
           builder: ${{ steps.buildx.outputs.name }}
           push: true
-          tags: 
-            - ${{ secrets.DOCKER_HUB_USERNAME }}/quiet-quartet:latest
-            - ${{ secrets.DOCKER_HUB_USERNAME }}/quiet-quartet:${{ env.DOCKER_TAG_DATE }}
+          tags: |
+            ${{ secrets.DOCKER_HUB_USERNAME }}/quiet-quartet:latest
+            ${{ secrets.DOCKER_HUB_USERNAME }}/quiet-quartet:${{ env.DOCKER_TAG_DATE }}
           cache-from: type=registry,ref=${{ secrets.DOCKER_HUB_USERNAME }}/quiet-quartet:buildcache
           cache-to: type=registry,ref=${{ secrets.DOCKER_HUB_USERNAME }}/quiet-quartet:buildcache,mode=max
 
@@ -113,8 +113,8 @@ jobs:
           file: ./stacks/groovy-guitar/Dockerfile
           builder: ${{ steps.buildx.outputs.name }}
           push: true
-          tags: 
-            - ${{ secrets.DOCKER_HUB_USERNAME }}/groovy-guitar:latest
-            - ${{ secrets.DOCKER_HUB_USERNAME}}/groovy-guitar:${{ env.DOCKER_TAG_DATE }}
+          tags: |
+            ${{ secrets.DOCKER_HUB_USERNAME }}/groovy-guitar:latest
+            ${{ secrets.DOCKER_HUB_USERNAME}}/groovy-guitar:${{ env.DOCKER_TAG_DATE }}
           cache-from: type=registry,ref=${{ secrets.DOCKER_HUB_USERNAME }}/groovy-guitar:buildcache
           cache-to: type=registry,ref=${{ secrets.DOCKER_HUB_USERNAME }}/groovy-guitar:buildcache,mode=max
