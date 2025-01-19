@@ -8,7 +8,7 @@ LABEL maintainer="Chase Ruskin"
 LABEL description="A hardware development stack around ghdl"
 
 # Add the toolchain layer
-FROM chaseruskin/ghdl-mcode:latest-ubuntu-22.04 AS toolchain
+FROM chaseruskin/ghdl-mcode:5.0.0-dev-ubuntu-22.04 AS toolchain
 
 COPY --from=os / /
 
@@ -17,12 +17,12 @@ FROM chaseruskin/lab:latest-ubuntu-22.04 AS development
 
 COPY --from=toolchain / /
 
-# Re-export any toolchain environment variables that were dropped
-# N/A
-
 # Merge tool information from across layers
 RUN echo "$(cat /etc/toolchain-tools)" >> /etc/tools
 RUN echo "$(cat /etc/development-tools)" >> /etc/tools
+
+# Re-export any toolchain environment variables that were dropped
+# N/A
 
 # Enter the shell
 CMD ["/bin/bash"]

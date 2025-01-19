@@ -17,12 +17,12 @@ FROM chaseruskin/lab:latest-ubuntu-22.04 AS development
 
 COPY --from=toolchain / /
 
-# Re-export any toolchain environment variables that were dropped
-ENV PATH="$PATH:$(cat /etc/toolchain-paths)"
-
 # Merge tool information from across layers
 RUN echo "$(cat /etc/toolchain-tools)" >> /etc/tools
 RUN echo "$(cat /etc/development-tools)" >> /etc/tools
+
+# Re-export any toolchain environment variables that were dropped
+ENV PATH="$PATH:$(cat /etc/toolchain-paths)"
 
 # Enter the shell
 CMD ["/bin/bash"]

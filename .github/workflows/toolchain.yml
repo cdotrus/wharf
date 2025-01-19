@@ -97,7 +97,7 @@ jobs:
           file: ./toolchain/ghdl-mcode/Dockerfile
           builder: ${{ steps.buildx.outputs.name }}
           push: true
-          tags: ${{ secrets.DOCKER_HUB_USERNAME }}/ghdl-mcode:latest-ubuntu-22.04
+          tags: ${{ secrets.DOCKER_HUB_USERNAME }}/ghdl-mcode:5.0.0-dev-ubuntu-22.04
           cache-from: type=registry,ref=${{ secrets.DOCKER_HUB_USERNAME }}/ghdl-mcode:buildcache
           cache-to: type=registry,ref=${{ secrets.DOCKER_HUB_USERNAME }}/ghdl-mcode:buildcache,mode=max
         
