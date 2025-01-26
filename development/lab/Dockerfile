@@ -2,7 +2,7 @@
 # hardware development stack.
 
 # Build upon the operating system layer 
-FROM ubuntu:22.04
+FROM ubuntu:22.04 AS os
 
 # Custom image metadata
 LABEL maintainer="Chase Ruskin"
@@ -11,23 +11,27 @@ LABEL description="A development layer for common processes"
 # Add supportive tools, scripting languages, etc. for workflow processes
 
 # @@@ Python (https://www.python.org)
-FROM brunneis/python:3.8.6-ubuntu-20.04
+RUN apt-get update
+RUN apt-get install -y \
+    python3 \
+    python3-pip
+
+# Create symlink to call python3 as python
+RUN ln -svT /usr/bin/python3 /usr/bin/python
 
 # Configure Python for any scripting during simulations
 RUN python -m pip install --upgrade pip
 
 # Log the tool's version
 RUN echo "python --version" >> /etc/development-tools
-COPY --from=0 / /
 
 
 # @@@ Orbit (https://github.com/chaseruskin/orbit)
 FROM chaseruskin/orbit:latest-ubuntu-22.04
-COPY --from=1 / /
+COPY --from=os / /
 
 # Log the tool's version
 RUN echo "orbit --version" >> /etc/development-tools
-
 
 # Download tools that are written in Rust
 RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
